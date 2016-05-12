@@ -1,5 +1,5 @@
 # Linux-CPU-Hotplugger
-This application simply monitor a system load from */proc/loadavg* then decides a number CPU core(s) online.
+This application simply monitor a system load from */proc/stat* then decides a number CPU core(s) online.
 
 **Note:** The minimum core powered on is always >= 1
 
