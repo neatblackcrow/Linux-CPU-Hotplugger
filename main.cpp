@@ -82,16 +82,13 @@ static inline void runLoop() {
 
     while (true) {
         float loadAVG = getCurrentCPUUtilization();
-        cout << loadAVG << endl;
         if ((loadAVG > cpuInfo.max_threshold) && (focusingCpu < cpuInfo.max_core_user-1)) {
             cpuCoreToggle(focusingCpu, ON);
             focusingCpu++;
-            cout << "increase" << endl;
         }
         else if ((loadAVG < cpuInfo.min_threshold) && (focusingCpu > cpuInfo.min_core_user-1)) {
             cpuCoreToggle(focusingCpu, OFF);
             focusingCpu--;
-            cout << "decrease" << endl;
         }
         sleep(sleepTime);
     }
@@ -100,8 +97,8 @@ static inline void runLoop() {
 static void signalReceived(int sigNum) {
     // Restore all the CPUs
     string sysCPU = sysCpuPath;
-    unsigned long minCPU = cpuInfo.min_core_system;
-    unsigned long maxCPU = cpuInfo.max_core_system;
+    unsigned int minCPU = cpuInfo.min_core_system;
+    unsigned int maxCPU = cpuInfo.max_core_system;
     while (minCPU <= maxCPU) {
         sysCPU.replace(27, 1, to_string(minCPU));
         ofstream coreActivator(sysCPU);
