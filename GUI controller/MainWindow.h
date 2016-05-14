@@ -13,7 +13,7 @@ protected:
     void quit();
     void toggleStatus();
 private:
-    const std::string BACKGROUND_RUN_PATH = "/var/run/linux_cpu_hotplugger.pid";
+    const std::string BACKGROUND_RUN_PATH = "/tmp/linux_cpu_hotplugger.pid";
     Glib::RefPtr<Gtk::Builder> builder;
     Gtk::Label* statusLabel;
     Gtk::Switch* statusToggle;
@@ -22,6 +22,8 @@ private:
     Gtk::SpinButton* minCores;
     Gtk::SpinButton* maxCores;
     Gtk::SpinButton* intervals;
+    void startBackgroundProcess();
+    void setControlWidgetsState(bool state);
 };
 
 #endif //LINUX_CPU_HOTPLUGGER_MAINWINDOW_H
