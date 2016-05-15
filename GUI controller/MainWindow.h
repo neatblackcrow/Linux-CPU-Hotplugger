@@ -23,7 +23,9 @@ private:
     Gtk::SpinButton* maxCores;
     Gtk::SpinButton* intervals;
     void startBackgroundProcess();
+    void stopBackgroundProcess();
     void setControlWidgetsState(bool state);
+    void widgetsSetup();
 };
 
 #endif //LINUX_CPU_HOTPLUGGER_MAINWINDOW_H
