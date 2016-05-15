@@ -8,7 +8,6 @@ It will not going to be a full featured app. But means to help some users to red
 Mainly because, Linux isn't targeting a desktop users at the first place - High performance computing / server aren't suitable for battery powered devices.
 
 **Screenshot:**
-Inline-style: 
 ![alt text](https://github.com/fieldfirst/Linux-CPU-Hotplugger/blob/master/screen-shot.png "Main UI")
 
 **P.S.:** For further power management or system administration tools, plese check out its sister project - [AutoCGroup] (https://github.com/fieldfirst/AutoCGroup)
