@@ -18,22 +18,22 @@ MainWindow::MainWindow(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>
     this->add_action("exit", sigc::mem_fun0(*this, &MainWindow::quit));
     this->add_action("about", sigc::mem_fun0(*this, &MainWindow::showAbout));
 
+    // Just get the widgets
+    this->builder->get_widget("labelStatus", this->statusLabel);
+    this->builder->get_widget("toggleStatus", this->statusToggle);
+    this->builder->get_widget("spinMinCore", this->minCores);
+    this->builder->get_widget("spinMaxCore", this->maxCores);
+    this->builder->get_widget("spinMinThreshold", this->minThreshold);
+    this->builder->get_widget("spinMaxThreshold", this->maxThreshold);
+    this->builder->get_widget("spinInterval", this->intervals);
+
     // Initialize the Gio and setup the widgets
     // Note: statusToggle (Gtk::Switch) must be set before attach its signal to slot
     Gio::init();
     this->widgetsSetup();
 
     // Add the signal handlers
-    this->builder->get_widget("toggleStatus", this->statusToggle);
     this->statusToggle->property_state().signal_changed().connect(sigc::mem_fun0(*this, &MainWindow::toggleStatus));
-
-    // Just get the widgets
-    this->builder->get_widget("labelStatus", this->statusLabel);
-    this->builder->get_widget("spinMinCore", this->minCores);
-    this->builder->get_widget("spinMaxCore", this->maxCores);
-    this->builder->get_widget("spinMinThreshold", this->minThreshold);
-    this->builder->get_widget("spinMaxThreshold", this->maxThreshold);
-    this->builder->get_widget("spinInterval", this->intervals);
 
 }
 
@@ -56,14 +56,10 @@ void MainWindow::widgetsSetup() {
     // Check if the pid file exists (backend already running)
     Glib::RefPtr<Gio::File> pidFile = Gio::File::create_for_path(this->BACKGROUND_RUN_PATH);
     if (pidFile->query_exists()) {
-        // Disables the widgets
+        // Diable the widgets
+        this->statusToggle->set_state(true);
         this->setControlWidgetsState(false);
         this->statusLabel->set_label("Hotplugger is <b>enabled</b>");
-    }
-    else {
-        // Enables the widgets
-        this->setControlWidgetsState(true);
-        this->statusLabel->set_label("Hotplugger is <b>disabled</b>");
     }
 }
 
