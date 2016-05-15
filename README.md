@@ -7,11 +7,14 @@ It will not going to be a full featured app. But means to help some users to red
 
 Mainly because, Linux isn't targeting a desktop users at the first place - High performance computing / server aren't suitable for battery powered devices.
 
+**Screenshot:**
+Inline-style: 
+![alt text](https://github.com/fieldfirst/Linux-CPU-Hotplugger/blob/master/screen-shot.png "Main UI")
 
 **P.S.:** For further power management or system administration tools, plese check out its sister project - [AutoCGroup] (https://github.com/fieldfirst/AutoCGroup)
 
 
-For a Linux user out there I recommend this options:
+For a Linux user out there I also recommend this options:
 
 1. Reduce **a timer clock frequency to 300Hz** - By compiling your own custom kernel
 
