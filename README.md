@@ -20,9 +20,7 @@ For a Linux user out there I also recommend this options:
 1. Reduce **a timer clock frequency to 300Hz** - By compiling your own custom kernel
 
     *Note: You can just grab a stock config from /proc/config.gz (by using zcat)*
+    
+2. Using a dynamic timer instead of a static one
 
-2. Adjust your p_state values (for Sandy bridge or newer with kernel version >= 3.18) otherwise adjust your CPU's governor instead.
-
-3. Using this simple application.
-
-    *Note: You must enable a __cgroup subsystem__ - By compiling your own custom kernel*
+3. Adjust your p_state values (for Sandy bridge or newer with kernel version >= 3.18) otherwise adjust your CPU's governor instead.
